@@ -36,7 +36,7 @@ Check that paddock page works
     Login to the paddock page   ${EMAIL}    ${PASSWORD}
 
 Check that paddock navbar functions
-    [Tags]    primary
+    [Tags]    Primary
     Navigate To Paddock Page
     Check navbar functionality
 

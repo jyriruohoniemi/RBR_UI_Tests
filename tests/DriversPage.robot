@@ -51,7 +51,6 @@ Select the car
     Click Element   ${specs_button}
 
 Check that Max info is correct
-
     Page Should Contain     Netherlands
     Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Netherlands
     Click Element    ${read_more}

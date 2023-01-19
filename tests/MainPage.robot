@@ -22,7 +22,7 @@ ${sponsor_items}    xpath=(//div[@class='sponsors__item'])[@class='sponsors__ite
 
 *** Test Cases ***
 Check the mailing list functionality
-    [Tags]    Misc
+    [Tags]    Test
     Join the mailing list  ${EMAIL_TEST}
 
 Check the podcast functionality

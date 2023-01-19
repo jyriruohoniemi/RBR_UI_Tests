@@ -17,6 +17,7 @@ ${NFT_PAGE}     xpath=//div[normalize-space()='NFTs']
 Open Browser and accept cookies
     Create Webdriver    ${BROWSER}   executable_path=/resources/${BROWSER}
     Maximize Browser Window
+    Set Selenium Speed    0.25
     Go To        ${URL}
     Accept Cookies
 
@@ -27,18 +28,22 @@ Accept cookies
 Navigate to races page
     Click Element   ${RACES_PAGE}
     Title Should Be    2022 FIA Formula One World Championship Race Calendar
+    Wait Until Keyword Succeeds    10x  1s  Title Should Be    2022 FIA Formula One World Championship Race Calendar
 
 Navigate to paddock page
     Click Element   ${paddock_page}
     Title Should Be    The Oracle Red Bull Racing Paddock
+    Wait Until Keyword Succeeds    10x  1s  Title Should Be    The Oracle Red Bull Racing Paddock
 
 Navigate to esports page
     Click Element   ${esports_page}
     Title Should Be    Oracle Red Bull Racing Esports
+    Wait Until Keyword Succeeds    10x  1s  Title Should Be    Oracle Red Bull Racing Esports
 
 Navigate to nft page
     Click Element   ${nft_page}
     Title Should Be    Discover Oracle Red Bull Racing NFTs
+    Wait Until Keyword Succeeds    10x  1s  Title Should Be    Discover Oracle Red Bull Racing NFTs
 
 Close Browser
     Close All Browsers
