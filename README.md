@@ -17,7 +17,7 @@ https://user-images.githubusercontent.com/77733793/213437495-f3302490-05fd-423f-
 
 ## Authors
 
-- [@jyriruohoniemi](https://www.github.com/jyriruohoniemi)
+- **Jyri Ruohoniemi** - *BBA Student @ Tampere University of Applied Sciences* - [Jyri Ruohoniemi](https://github.com/jyriruohoniemi)
 
 
 ## Run Locally
