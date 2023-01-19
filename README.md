@@ -3,7 +3,8 @@
 
 A personal project to test and practice Robot Framework test automation with Selenium.
 
-Featuring tests for some of the everyday use cases pertaining to the Red Bull Racing website @ redbullracing.com, such as checking drivers information, verifying mailing list functionality, logging in to the paddock and so on.
+Featuring tests for some of the everyday use cases pertaining to the Red Bull Racing website @ redbullracing.com. 
+Including checking drivers information, verifying mailing list functionality, logging in to the paddock, checking social media handles and so on.
 
 ## Demo
 
