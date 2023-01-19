@@ -4,6 +4,7 @@ Library            pabot.pabotlib
 Resource      ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
+Documentation    This file contains the tests related to operations of the paddock page
 
 *** Variables ***
 ${paddock_logo}     https://red-bull-racing.herokuapp.com/assets/paddock_logo-c360975fa06f95588e6c362794dd8919.svg
@@ -40,17 +41,17 @@ Check that paddock navbar functions
     Check navbar functionality
 
 Check the fan stories functionality
-    [Tags]    primary
+    [Tags]    Secondary
     Navigate To Paddock Page
     Check fan stories
 
 Check the profile functionality
-    [Tags]    primary
+    [Tags]    Primary
     Navigate To Paddock Page
     Check profile page
 
 Check the garage functionality
-    [Tags]    primary
+    [Tags]    Secondary
     Navigate To Paddock Page
     Check garage page
 

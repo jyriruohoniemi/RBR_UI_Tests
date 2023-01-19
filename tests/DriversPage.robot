@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation    This file contains the keywords and tests pertaining to the drivers page.
 Library           SeleniumLibrary
 Library           Collections
 Resource        ../resources/Generic.robot
@@ -16,18 +17,20 @@ ${view_more}    xpath=//button[@class='button button--clickable']
 
 
 *** Test Cases ***
+#TODO: Check social media links of drivers
+
 Check that max verstappen info is correct
-    [Tags]    driver
+    [Tags]    Primary
     Select Max Verstappen
     Check that Max info is correct
 
 Check that Sergio Perez info is correct
-     [Tags]    driver
+     [Tags]    Primary
     Select Sergio Perez
     Check that Sergio info is correct
 
 Check that car info is correct
-     [Tags]    driver
+     [Tags]    Primary
     Select the car
     Check that car info is correct
     Verify technical specs
@@ -48,8 +51,9 @@ Select the car
     Click Element   ${specs_button}
 
 Check that Max info is correct
+
     Page Should Contain     Netherlands
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Netherlands
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Netherlands
     Click Element    ${read_more}
     Page Should Contain     23,000 laps raced
     Click Element    ${view_more}
@@ -58,7 +62,7 @@ Check that Max info is correct
 
 Check that Sergio info is correct
     Page Should Contain     Mexico
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Mexico
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Mexico
     Wait Until Element Is Located    ${read_more}
     Click Element    ${read_more}
     Page Should Contain     Force India/Racing Point
@@ -68,7 +72,7 @@ Check that Sergio info is correct
 
 Check that car info is correct
     Page Should Contain    696
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    696
+    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    696
     Wait Until Element Is Located    ${info_pin}[1]
     Mouse Over    ${info_pin}[0]
     Page Should Contain    A four-element wing

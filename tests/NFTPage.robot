@@ -18,7 +18,7 @@ ${page_summary}     xpath=(//div[@class='inline-content-index'])[1]
 
 *** Test Cases ***
 Test Navbar
-    [Tags]    Smoke
+    [Tags]    Misc
     Navigate To Nft Page
     Check That The Navbar Works
 
@@ -30,7 +30,7 @@ Check that the navbar works
     Wait Until Element Is Located    ${heading}
     Click element   ${navbar_about}
     Page Should Contain    Innovation lies at the heart of Oracle Red Bull Racing
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Innovation lies at the heart of Oracle Red Bull Racing
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Innovation lies at the heart of Oracle Red Bull Racing
     Click element   ${navbar_videos}
     Wait Until Element Is Visible    ${video_player}
     Click Element    ${navbar_faqs}

@@ -9,33 +9,36 @@ Resource          ../resources/Generic.robot
 Documentation     This file contains all the keywords, tests and variables related to the operations of the main page
 
 *** Variables ***
+${email_field}          xpath=//input[@placeholder='Your email:']
+@{checkbox}             //div[@class='rbr-lite-account-presignup false']//div[1]//div[1]  //div[@class='rbr-lite-account-presignup false']//div[2]//div[1]    //div[@class='rbr-lite-account-presignup false']//div[3]//div[1]
+${submit_button}        xpath=//button[normalize-space()='Submit']
 ${podcast_banner}       xpath=//div[@id='crsd-rbracing-debrief-panel']//div[@class='editors-pick__wrapper']
 ${view_podcast}         xpath=//cosmos-text-3-22-1[contains(text(),'Talking Bull is the official podcast of the Oracle')]
 ${handle}               xpath=//div[@class='splitview skewed d-none d-lg-flex']
 ${social_media_container}   xpath=//div[@class='social-follow__buttons social-follow__buttons--3']
-@{social_media_links}       css:body > main:nth-child(1) > div:nth-child(1) > div:nth-child(16) > div:nth-child(1) > cosmos-mode-3-22-1:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)    css:body > main:nth-child(1) > div:nth-child(1) > div:nth-child(16) > div:nth-child(1) > cosmos-mode-3-22-1:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2)    css:body > main:nth-child(1) > div:nth-child(1) > div:nth-child(16) > div:nth-child(1) > cosmos-mode-3-22-1:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(3)
+@{social_media_links}   xpath=(//div[@class='social-follow__button'])[1]  xpath=(//div[@class='social-follow__button'])[2]  xpath=(//div[@class='social-follow__button'])[3]
 ${sponsor_banner}   xpath=//cosmos-title-3-22-1[@class='sponsors__title']
 ${sponsor_items}    xpath=(//div[@class='sponsors__item'])[@class='sponsors__item']
 
 *** Test Cases ***
 Check the mailing list functionality
-    [Tags]    Secondary
+    [Tags]    Misc
     Join the mailing list  ${EMAIL_TEST}
 
 Check the podcast functionality
-    [Tags]    Secondary
-    MainPage.Check the podcast functionality
+    [Tags]    Misc
+    Check the podcast functionality
 
 Check social media
     [Tags]      Secondary
     Verify social media links
 
 Verify draggable handle works
-    [Tags]    Secondary
+    [Tags]    Misc
     Drag the handle
 
 Test the partner links
-    [Tags]    Secondary
+    [Tags]    Primary
     Verify the functionality of the partner links
 
 *** Keywords ***
@@ -73,7 +76,7 @@ Verify social media links
     Switch Window    NEW
     Title Should Be    Oracle Red Bull Racing (@redbullracing) / Twitter
 
-#TODO
+
 Verify the functionality of the partner links
     ${index}=   Set Variable    1
     ${contents}=    Get File    ../resources/sponsors.txt

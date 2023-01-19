@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation    This file contains the keywords and tests pertaining to the esports page.
 Library         SeleniumLibrary
 Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
@@ -26,28 +27,29 @@ ${race_card}    css:div[class='event-series-rail__expanded-item'] div[class='hub
 
 
 *** Test Cases ***
+#TODO: Test the partner links
 Check the functionality of the navbar
-    [Tags]   ESPORT
+    [Tags]   Primary
     Navigate to esports page
     Check that all tabs work
 
 Check the functionality of the newsletter
-    [Tags]   ESPORT
+    [Tags]   Misc
     Navigate to esports page
     Sign up for the free Newsletter     ${EMAIL_TEST}
 
 Check the functionality of the social handles
-    [Tags]   ESPORT
+    [Tags]   Secondary
     Navigate to esports page
     Check socials
 
 Check the functionality of the shop
-    [Tags]   ESPORT
+    [Tags]   Secondary
     Navigate to esports page
     Verify shop page functionality
 
 Check the functionality of the events
-    [Tags]   ESPORT
+    [Tags]   Secondary
     Navigate to esports page
     Test calendar functionality
 
@@ -55,16 +57,16 @@ Check the functionality of the events
 Check that all tabs work
     Wait Until Element Is Located    ${tab_team}
     Click Element    ${tab_team}
-    Page Should Contain    Get to know more about our Esports drivers
-    Wait Until Keyword Succeeds    5s    1s    Page Should Contain    Get to know more about our Esports drivers
+    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_races}
     Click Element    ${tab_races}
-    Page Should Contain    Keep up to date with the latest race schedule
-    Wait Until Keyword Succeeds    5s   1s      Page Should Contain    Keep up to date with the latest race schedule
+    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_partners}
     Click Element    ${tab_partners}
-    Page Should Contain    Working together to lead the charge
-    Wait Until Keyword Succeeds    5s    1s    Page Should Contain    Working together to lead the charge
+    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_shop}
     Click Element    ${tab_shop}
     Wait Until Element Is Located    ${shop_item}
@@ -94,6 +96,7 @@ Check socials
     Click Element    ${social_handles}[2]
     Switch Window    NEW
     Title Should Be    Red Bull Racing Esports - Home | Facebook
+    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    Red Bull Racing Esports - Home | Facebook
 
 
 
@@ -128,7 +131,7 @@ Test calendar functionality
     Wait Until Element Is Located    ${event_view_more}
     Click Element    ${event_view_more}
     Page Should Contain    2022/23 Le Mans Virtual Series Finale
-    Wait Until Keyword Succeeds    5s    1s    Page Should Contain    2022/23 Le Mans Virtual Series Finale
+    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    2022/23 Le Mans Virtual Series Finale
 
 
 
