@@ -153,3 +153,5 @@ cython_debug/
 tests/log.html
 tests/output.xml
 tests/report.html
+*.html
+*.xml
