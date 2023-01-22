@@ -24,10 +24,12 @@ ${filter_story}     xpath=(//div[@class='rbr-paddock-filter-option false'][norma
 ${toggle_filter}    xpath=(//div[@class='rbr-paddock-filter-option is-active'][normalize-space()='Stories'])[1]
 ${filter_images}    xpath=(//div[@class='rbr-paddock-filter-option false'][normalize-space()='Images'])[1]
 ${toggle_filter_images}     xpath=(//div[@class='rbr-paddock-filter-option is-active'][normalize-space()='Images'])[1]
+@{profile_input_field}  xpath=(//input[contains(@type,'text')])[4]  xpath=(//input[contains(@type,'text')])[5]  xpath=(//input[contains(@type,'text')])[6]  xpath=(//input[contains(@type,'text')])[7]  xpath=(//input[contains(@type,'text')])[8]
 ${gender_dropdown}  xpath=(//div)[119]
 @{marketing_toggle}     xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[1]   xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[2]     xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[3]
 ${garage}   xpath=(//p[normalize-space()='Garage'])[1]
 ${garage_input}     css:body > main:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)
+${dropdown_showing}     css:.rbr-cosmos-select-dropdown.is-showing
 
 *** Test Cases ***
 Check that paddock page works
@@ -113,11 +115,11 @@ Check profile page
     Click Element   ${marketing_toggle}[1]
     Click Element   ${marketing_toggle}[2]
     Click Element    xpath=(//button[contains(text(),'Save')])[1]
-    Input Text    (//input[contains(@type,'text')])[4]      SomeStreet 11
-    Input Text    (//input[contains(@type,'text')])[5]      SomeCity
-    Input Text    (//input[contains(@type,'text')])[6]      SomeState
-    Input Text    (//input[contains(@type,'text')])[7]      12345
-    Input Text    (//input[contains(@type,'text')])[8]      SomeCountry
+    Input Text    ${profile_input_field}[0]      SomeStreet 11
+    Input Text    ${profile_input_field}[1]      SomeCity
+    Input Text    ${profile_input_field}[2]      SomeState
+    Input Text    ${profile_input_field}[3]      12345
+    Input Text    ${profile_input_field}[4]      SomeCountry
     Wait Until Element Is Located    xpath=(//button[contains(text(),'Save')])[2]
     Click Element    xpath=(//button[contains(text(),'Save')])[2]
     Page Should Contain    Saved!
@@ -131,15 +133,15 @@ Check garage page
     Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
     Input Text      ${garage_input}     99
     Click Element   (//p)[15]
-    Wait Until Element Is Located    css:.rbr-cosmos-select-dropdown.is-showing
+    Wait Until Element Is Located    ${dropdown_showing}
     Click Element    (//div[contains(@class,'rbr-cosmos-select-option')])[4]
     Click Element    (//button[contains(text(),'Save')])[1]
     Page Should Contain    Saving...
     Click Element    (//p)[23]
-    Wait Until Element Is Located    css:.rbr-cosmos-select-dropdown.is-showing
+    Wait Until Element Is Located    ${dropdown_showing}
     Click Element    (//p[normalize-space()='Circuit de Monaco'])[1]
     Click Element    (//p)[45]
-    Wait Until Element Is Located    css:.rbr-cosmos-select-dropdown.is-showing
+    Wait Until Element Is Located    ${dropdown_showing}
     Click Element    (//p[normalize-space()='RB10'])[1]
     Click Element    (//button[contains(text(),'Save')])[1]
     Page Should Contain    Saving...

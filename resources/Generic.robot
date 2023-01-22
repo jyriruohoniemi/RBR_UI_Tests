@@ -17,7 +17,6 @@ ${NFT_PAGE}     xpath=//div[normalize-space()='NFTs']
 Open Browser and accept cookies
     Create Webdriver    ${BROWSER}   executable_path=/resources/${BROWSER}
     Maximize Browser Window
-    Set Selenium Speed    0.25
     Go To        ${URL}
     Accept Cookies
 
