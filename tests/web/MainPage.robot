@@ -5,7 +5,7 @@ Library           String
 Library           Collections
 Test Setup      Open Browser and accept cookies
 Test Teardown    Close Browser
-Resource          ../resources/Generic.robot
+Resource          ../../resources/Generic.robot
 Documentation     This file contains all the keywords, tests and variables related to the operations of the main page
 
 *** Variables ***

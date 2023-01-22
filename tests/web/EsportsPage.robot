@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    This file contains the keywords and tests pertaining to the esports page.
 Library         SeleniumLibrary
-Resource        ../resources/Generic.robot
+Resource        ../../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 

@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Resource        ../resources/Generic.robot
+Resource        ../../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 Documentation    This test suite is used to test the functionality of the Races page and its features.

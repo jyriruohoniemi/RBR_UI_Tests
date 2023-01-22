@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library            pabot.pabotlib
-Resource      ../resources/Generic.robot
+Resource      ../../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 Documentation    This file contains the tests related to operations of the paddock page

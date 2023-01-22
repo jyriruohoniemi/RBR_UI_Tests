@@ -2,7 +2,7 @@
 Documentation    This file contains the keywords and tests pertaining to the drivers page.
 Library           SeleniumLibrary
 Library           Collections
-Resource        ../resources/Generic.robot
+Resource        ../../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 

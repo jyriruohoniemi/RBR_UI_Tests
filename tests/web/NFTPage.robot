@@ -1,6 +1,6 @@
 *** Settings ***
 Library       SeleniumLibrary
-Resource      ../resources/Generic.robot
+Resource      ../../resources/Generic.robot
 Test Setup    Open Browser And Accept Cookies
 Test Teardown    Close Browser
 
