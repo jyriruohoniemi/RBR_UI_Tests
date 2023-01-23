@@ -53,7 +53,6 @@ Select the car
     Click Element   ${specs_button}
 
 Check that Max info is correct
-    Page Should Contain     Netherlands
     Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Netherlands
     Click Element    ${read_more}
     Page Should Contain     23,000 laps raced
@@ -62,7 +61,6 @@ Check that Max info is correct
     Click Element    ${view_more}
 
 Check that Sergio info is correct
-    Page Should Contain     Mexico
     Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Mexico
     Wait Until Element Is Located    ${read_more}
     Click Element    ${read_more}

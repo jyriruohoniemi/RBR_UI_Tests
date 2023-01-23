@@ -66,10 +66,13 @@ Check the calendar functionality and check another race
     Wait Until Element Is Located    ${view_event_info}
     Click Element   ${view_event_info}
     Wait Until Element Is Located    ${heading}
+    Wait Until Element Is Located     ${race_tab_fp}
     Click Element   ${race_tab_fp}
     Page Should Contain    Published on
+    Wait Until Element Is Located     ${race_tab_quali}
     Click Element    ${race_tab_quali}
     Page Should Contain     Published on
+    Wait Until Element Is Located   ${race_tab_race}
     Click Element    ${race_tab_race}
     Page Should Contain     Published on
 
