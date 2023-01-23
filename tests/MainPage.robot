@@ -66,7 +66,7 @@ Verify social media links
     Wait Until Element Is Located   ${social_media_container}
     Click Element    ${social_media_links}[0]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos    #This link might be broken? Fails because page ios not found
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos    #This link might be broken? Fails because page is not found
     Switch Window   MAIN
     Click Element    ${social_media_links}[1]
     Switch Window    NEW
