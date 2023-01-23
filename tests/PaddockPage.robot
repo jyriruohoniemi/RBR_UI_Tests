@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library            pabot.pabotlib
-Resource      ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 Documentation    This file contains the tests related to operations of the paddock page
@@ -122,14 +122,14 @@ Check profile page
     Input Text    ${profile_input_field}[4]      SomeCountry
     Wait Until Element Is Located    xpath=(//button[contains(text(),'Save')])[2]
     Click Element    xpath=(//button[contains(text(),'Save')])[2]
-    Page Should Contain    Saved!
+    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saved!
 
 Check garage page
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}
     Click Element    ${navbar_profile}
     Click Element    ${garage}
-    Page Should Contain    Garage
+    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Garage
     Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
     Input Text      ${garage_input}     99
     Click Element   (//p)[15]
@@ -144,4 +144,4 @@ Check garage page
     Wait Until Element Is Located    ${dropdown_showing}
     Click Element    (//p[normalize-space()='RB10'])[1]
     Click Element    (//button[contains(text(),'Save')])[1]
-    Page Should Contain    Saving...
+    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saving...

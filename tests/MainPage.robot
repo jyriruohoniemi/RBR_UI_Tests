@@ -5,7 +5,7 @@ Library           String
 Library           Collections
 Test Setup      Open Browser and accept cookies
 Test Teardown    Close Browser
-Resource          ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Documentation     This file contains all the keywords, tests and variables related to the operations of the main page
 
 *** Variables ***
@@ -51,12 +51,12 @@ Join the mailing list
     Click Element           ${checkbox}[2]
     Wait Until Element Is Enabled   ${submit_button}
     Click Button    ${submit_button}
-    Page Should Contain    Thanks for joining the Oracle Red Bull Racing charge.
+    Wait Until Keyword Succeeds     10s    1s   Page Should Contain    Thanks for joining the Oracle Red Bull Racing charge.
 
 Check the podcast functionality
     Wait Until Element Is Located    ${podcast_banner}
     Click Element        ${view_podcast}
-    Page Should Contain    Talking Bull
+    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Talking Bull
 
 Drag the handle
     Click Element At Coordinates    ${handle}   126   254
@@ -66,15 +66,15 @@ Verify social media links
     Wait Until Element Is Located   ${social_media_container}
     Click Element    ${social_media_links}[0]
     Switch Window    NEW
-    Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos
     Switch Window   MAIN
     Click Element    ${social_media_links}[1]
     Switch Window    NEW
-    Title Should Be    Oracle Red Bull Racing - Home | Facebook
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing - Home | Facebook
     Switch Window   MAIN
     Click Element    ${social_media_links}[2]
     Switch Window    NEW
-    Title Should Be    Oracle Red Bull Racing (@redbullracing) / Twitter
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) / Twitter
 
 
 Verify the functionality of the partner links

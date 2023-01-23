@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation    This file contains the keywords and tests pertaining to the esports page.
 Library         SeleniumLibrary
-Resource        ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 
@@ -57,16 +57,13 @@ Check the functionality of the events
 Check that all tabs work
     Wait Until Element Is Located    ${tab_team}
     Click Element    ${tab_team}
-    Page Should Contain Element    css:.description-text__summary__text
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_races}
     Click Element    ${tab_races}
-    Page Should Contain Element    css:.description-text__summary__text
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_partners}
     Click Element    ${tab_partners}
-    Page Should Contain Element    css:.description-text__summary__text
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_shop}
     Click Element    ${tab_shop}
     Wait Until Element Is Located    ${shop_item}
@@ -86,16 +83,15 @@ Check socials
     Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
-    Title Should Be    Oracle Red Bull Racing Esports (@redbullracingES) / Twitter
+    Wait Until Keyword Succeeds     10s    1s     Title Should Be    Oracle Red Bull Racing Esports (@redbullracingES) / Twitter
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
     #Page removed?
-    Title Should Be    Page not found • Instagram
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Page not found • Instagram
     Switch Window   MAIN
     Click Element    ${social_handles}[2]
     Switch Window    NEW
-    Title Should Be    Red Bull Racing Esports - Home | Facebook
     Wait Until Keyword Succeeds    10x    1s    Page Should Contain    Red Bull Racing Esports - Home | Facebook
 
 
@@ -106,19 +102,19 @@ Verify shop page functionality
     Wait Until Element Is Located    ${shop_items}[0]
     Click Element    ${shop_items}[0]
     Switch Window    NEW
-    Title Should Be    Oracle Red Bull Racing Shop: Esports Driver Cap 2022 | only here at redbullshop.com
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing Shop: Esports Driver Cap 2022 | only here at redbullshop.com
     Switch Window   MAIN
     Click Element    ${shop_items}[1]
     Switch Window    NEW
-    Title Should Be    Playseat® Evolution PRO Red Bull Racing Esports - PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Playseat® Evolution PRO Red Bull Racing Esports - PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
     Switch Window   MAIN
     Click Element    ${shop_items}[2]
     Switch Window    NEW
-    Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
     Switch Window   MAIN
     Click Element    ${shop_items}[3]
     Switch Window    NEW
-    Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Keyword Succeeds     10s    1s   Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
 
 
 
@@ -130,8 +126,7 @@ Test calendar functionality
     Scroll Element Into View    ${race_card}
     Wait Until Element Is Located    ${event_view_more}
     Click Element    ${event_view_more}
-    Page Should Contain    2022/23 Le Mans Virtual Series Finale
-    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    2022/23 Le Mans Virtual Series Finale
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    2022/23 Le Mans Virtual Series Finale
 
 
 

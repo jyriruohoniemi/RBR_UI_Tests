@@ -2,7 +2,7 @@
 Documentation    This file contains the keywords and tests pertaining to the drivers page.
 Library           SeleniumLibrary
 Library           Collections
-Resource        ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 
@@ -13,21 +13,23 @@ ${navigation_arrow}     xpath=//div[@id='rbr-drivers-panel']//div[@class='track_
 ${read_more}    xpath=//div[@class='description-text__read-more']//button[@class='button button--clickable']
 ${view_more}    xpath=//button[@class='button button--clickable']
 @{info_pin}     xpath=//div[@id='pin-1']    xpath=//div[@id='pin-2']    xpath=//div[@id='pin-3']    xpath=//div[@id='pin-4']
+${social_container}     css:.social-follow__buttons.social-follow__buttons--3
+@{social_handles}   xpath=(//div[@class='social-follow__button'])[1]    (//div[@class='social-follow__button'])[2]  xpath=(//div[@class='social-follow__button'])[3]
 
 
 
 *** Test Cases ***
-#TODO: Check social media links of drivers
-
 Check that max verstappen info is correct
     [Tags]    Primary
     Select Max Verstappen
     Check that Max info is correct
+    Check Social Media Links Of Max
 
 Check that Sergio Perez info is correct
      [Tags]    Primary
     Select Sergio Perez
     Check that Sergio info is correct
+    Check Social Media Links Of Sergio
 
 Check that car info is correct
      [Tags]    Primary
@@ -52,7 +54,7 @@ Select the car
 
 Check that Max info is correct
     Page Should Contain     Netherlands
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Netherlands
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Netherlands
     Click Element    ${read_more}
     Page Should Contain     23,000 laps raced
     Click Element    ${view_more}
@@ -61,17 +63,17 @@ Check that Max info is correct
 
 Check that Sergio info is correct
     Page Should Contain     Mexico
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Mexico
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Mexico
     Wait Until Element Is Located    ${read_more}
     Click Element    ${read_more}
-    Page Should Contain     Force India/Racing Point
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain     Force India/Racing Point
     Click Element    ${view_more}
-    Page Should Contain    Wins the Sakhir Grand Prix
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Wins the Sakhir Grand Prix
     Click Element    ${view_more}
 
 Check that car info is correct
     Page Should Contain    696
-    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    696
+    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    696
     Wait Until Element Is Located    ${info_pin}[1]
     Mouse Over    ${info_pin}[0]
     Page Should Contain    A four-element wing
@@ -93,3 +95,37 @@ Verify technical specs
     Lists Should Be Equal    ${expected_specs}    ${actual_specs}
     Log    ${actual_specs}
     Log    ${expected_specs}
+
+
+Check social media links of max
+    Wait Until Element Is Located   ${social_container}
+    Scroll Element Into View    ${social_handles}[0]
+    Click Element    ${social_handles}[0]
+    Switch Window    NEW
+    #Can't view page without a facebook account
+    Title Should Be    Log in to Facebook
+    Switch Window   MAIN
+    Click Element    ${social_handles}[1]
+    Switch Window    NEW
+    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Max Verstappen (@Max33Verstappen) / Twitter
+    Switch Window   MAIN
+    Click Element    ${social_handles}[2]
+    Switch Window    NEW
+    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Max Verstappen (@maxverstappen1) • Instagram photos and videos
+
+
+Check social media links of sergio
+    Wait Until Element Is Located   ${social_container}
+    Scroll Element Into View    ${social_handles}[0]
+    Click Element    ${social_handles}[0]
+    Switch Window    NEW
+    #Can't view page without a facebook account
+    Title Should Be    Log in to Facebook
+    Switch Window   MAIN
+    Click Element    ${social_handles}[1]
+    Switch Window    NEW
+    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Checo Pérez (@schecoperez) • Instagram photos and videos
+    Switch Window   MAIN
+    Click Element    ${social_handles}[2]
+    Switch Window    NEW
+    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Sergio Pérez (@SChecoPerez) / Twitter

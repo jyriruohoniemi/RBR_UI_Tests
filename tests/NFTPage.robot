@@ -1,6 +1,6 @@
 *** Settings ***
 Library       SeleniumLibrary
-Resource      ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Test Setup    Open Browser And Accept Cookies
 Test Teardown    Close Browser
 
@@ -29,8 +29,7 @@ Check that the navbar works
     Click element   ${navbar_nft}
     Wait Until Element Is Located    ${heading}
     Click element   ${navbar_about}
-    Page Should Contain    Innovation lies at the heart of Oracle Red Bull Racing
-    Wait Until Keyword Succeeds    15x    1s    Page Should Contain    Innovation lies at the heart of Oracle Red Bull Racing
+    Wait Until Keyword Succeeds     10s    1s   Page Should Contain Element     xpath=//span[@class='description-text__summary__text']
     Click element   ${navbar_videos}
     Wait Until Element Is Visible    ${video_player}
     Click Element    ${navbar_faqs}

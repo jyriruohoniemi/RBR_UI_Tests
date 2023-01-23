@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Resource        ../../resources/Generic.robot
+Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
 Documentation    This test suite is used to test the functionality of the Races page and its features.
@@ -63,6 +63,7 @@ Check the calendar functionality and check another race
     Wait Until Element Is Located    ${race_card}
     Scroll Element Into View    ${race_card}
     Click Element   ${race_card}
+    Wait Until Element Is Located    ${view_event_info}
     Click Element   ${view_event_info}
     Wait Until Element Is Located    ${heading}
     Click Element   ${race_tab_fp}
