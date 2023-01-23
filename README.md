@@ -8,17 +8,7 @@ Including checking drivers information, verifying mailing list functionality, lo
 
 ## Demo
 
-
-
 https://user-images.githubusercontent.com/77733793/213437495-f3302490-05fd-423f-9153-f854c9e946c1.mp4
-
-
-
-
-## Authors
-
-- **Jyri Ruohoniemi** - *BBA Student @ Tampere University of Applied Sciences* - [Jyri Ruohoniemi](https://github.com/jyriruohoniemi)
-
 
 ## Run Locally
 
@@ -56,3 +46,7 @@ Run all tests
 ```bash
   python -m robot -include Primary/Secondary/Misc/Critical .
 ```
+
+## Authors
+
+**Jyri Ruohoniemi** - *BBA Student @ Tampere University of Applied Sciences* - [Jyri Ruohoniemi](https://github.com/jyriruohoniemi)
