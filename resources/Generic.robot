@@ -50,3 +50,8 @@ Close Browser
 Wait until element is located
     [Arguments]    ${page_locator}
     Wait Until Element Is Visible        ${page_locator}    timeout=20s
+
+Wait Until Completion
+    [Arguments]    ${KW}    ${KWARGS}
+    Wait Until Keyword Succeeds    20s  1s  ${KW}    ${KWARGS}
+

@@ -45,41 +45,41 @@ Check the news tab
 *** Keywords ***
 Check the latest race
     Wait Until Element Is Located    ${latest_race}
-    Click Element    ${read_race_report}
+    Wait Until Completion    Click Element    ${read_race_report}
     Wait Until Element Is Located    ${heading}
     Wait Until Element Is Located   ${race_tab_fp}
-    Click Element   ${race_tab_fp}
+    Wait Until Completion    Click Element   ${race_tab_fp}
     Page Should Contain        Published on
     Wait Until Element Is Located    ${race_tab_quali}
-    Click Element    ${race_tab_quali}
+    Wait Until Completion    Click Element    ${race_tab_quali}
     Page Should Contain     Published on
     Wait Until Element Is Located    ${race_tab_race}
-    Click Element    ${race_tab_race}
+    Wait Until Completion    Click Element    ${race_tab_race}
     Page Should Contain     Published on
 
 Check the calendar functionality and check another race
     Wait Until Element Is Located   ${calendar}
-    Click Element    ${navigation_arrow_left}
+    Wait Until Completion    Click Element    ${navigation_arrow_left}
     Wait Until Element Is Located    ${race_card}
-    Scroll Element Into View    ${race_card}
-    Click Element   ${race_card}
+    Wait Until Completion    Scroll Element Into View    ${race_card}
+    Wait Until Completion    Click Element   ${race_card}
     Wait Until Element Is Located    ${view_event_info}
-    Click Element   ${view_event_info}
+    Wait Until Completion    Click Element   ${view_event_info}
     Wait Until Element Is Located    ${heading}
     Wait Until Element Is Located     ${race_tab_fp}
-    Click Element   ${race_tab_fp}
+    Wait Until Completion    Click Element   ${race_tab_fp}
     Page Should Contain    Published on
     Wait Until Element Is Located     ${race_tab_quali}
-    Click Element    ${race_tab_quali}
+    Wait Until Completion    Click Element    ${race_tab_quali}
     Page Should Contain     Published on
     Wait Until Element Is Located   ${race_tab_race}
-    Click Element    ${race_tab_race}
+    Wait Until Completion    Click Element    ${race_tab_race}
     Page Should Contain     Published on
 
 
 Check news
     Wait Until Element Is Located    ${news_title}
-    Scroll Element Into View    ${news_title}
+    Wait Until Completion    Scroll Element Into View    ${news_title}
     Wait Until Element Is Located   ${news_card}
-    Click Element    ${news_card}
+    Wait Until Completion    Click Element    ${news_card}
     Page should Contain     Published on

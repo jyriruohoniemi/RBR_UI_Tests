@@ -24,6 +24,7 @@ ${social_container}     css:.social-follow__buttons.social-follow__buttons--3
 ${event_panel}  css:.content-hub-event-series-panel__caption
 ${event_view_more}    css:div[class='event-series-rail__expanded-item'] a[class='button button--clickable']
 ${race_card}    css:div[class='event-series-rail__expanded-item'] div[class='hub-event-card']
+@{esport_partners}      Oracle      Bybit - Principal Team Partner      HyperX™ - Red Bull Racing Esports Peripherals Partner   Playseat® - Red Bull Racing Esports Partner   AOC - Red Bull Racing Esports Gaming Monitor Partner      Blenders - Eyewear Partner      Fanatec® - Red Bull Racing Esports Partner     Mobil 1   Pirelli
 
 
 *** Test Cases ***
@@ -53,46 +54,51 @@ Check the functionality of the events
     Navigate to esports page
     Test calendar functionality
 
+#Verify partner links
+#    [Tags]   Test
+#    Navigate to esports page
+#    Check partner link functionality    ${esport_partners}
+
 *** Keywords ***
 Check that all tabs work
     Wait Until Element Is Located    ${tab_team}
-    Click Element    ${tab_team}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Completion    Click Element    ${tab_team}
+    Wait Until Completion        Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_races}
-    Click Element    ${tab_races}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Completion    Click Element    ${tab_races}
+    Wait Until Completion        Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_partners}
-    Click Element    ${tab_partners}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain Element    css:.description-text__summary__text
+    Wait Until Completion    Click Element    ${tab_partners}
+    Wait Until Completion        Page Should Contain Element    css:.description-text__summary__text
     Wait Until Element Is Located    ${tab_shop}
-    Click Element    ${tab_shop}
+    Wait Until Completion    Click Element    ${tab_shop}
     Wait Until Element Is Located    ${shop_item}
 
 Sign up for the free Newsletter
     [Arguments]    ${email}
     Wait Until Element Is Located   ${newsletter_container}
     Input Text   ${email_field}     ${email}
-    Click Element           ${checkbox}[0]
-    Click Element           ${checkbox}[1]
+    Wait Until Completion    Click Element           ${checkbox}[0]
+    Wait Until Completion    Click Element           ${checkbox}[1]
     Wait Until Element Is Enabled   ${submit_button}
-    Click Button    ${submit_button}
+    Wait Until Completion    Click Button    ${submit_button}
     Wait Until Element Is Located    ${confirm_message}
 
 Check socials
     Wait Until Element Is Located   ${social_container}
-    Scroll Element Into View    ${social_handles}[0]
+    Wait Until Completion    Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s     Title Should Be    Oracle Red Bull Racing Esports (@redbullracingES) / Twitter
+    Wait Until Completion         Title Should Be    Oracle Red Bull Racing Esports (@redbullracingES) / Twitter
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
     #Page removed?
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Page not found • Instagram
+    Wait Until Completion       Title Should Be    Page not found • Instagram
     Switch Window   MAIN
     Click Element    ${social_handles}[2]
     Switch Window    NEW
-    Wait Until Keyword Succeeds    10x    1s    Page Should Contain    Red Bull Racing Esports - Home | Facebook
+    Wait Until Completion        Page Should Contain    Red Bull Racing Esports - Home | Facebook
 
 
 
@@ -102,19 +108,19 @@ Verify shop page functionality
     Wait Until Element Is Located    ${shop_items}[0]
     Click Element    ${shop_items}[0]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing Shop: Esports Driver Cap 2022 | only here at redbullshop.com
+    Wait Until Completion       Title Should Be    Oracle Red Bull Racing Shop: Esports Driver Cap 2022 | only here at redbullshop.com
     Switch Window   MAIN
     Click Element    ${shop_items}[1]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Playseat® Evolution PRO Red Bull Racing Esports - PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Completion       Title Should Be    Playseat® Evolution PRO Red Bull Racing Esports - PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
     Switch Window   MAIN
     Click Element    ${shop_items}[2]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Completion       Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
     Switch Window   MAIN
     Click Element    ${shop_items}[3]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
+    Wait Until Completion       Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
 
 
 
@@ -123,10 +129,32 @@ Test calendar functionality
     Click Element    ${tab_races}
     Wait Until Element Is Located   ${event_panel}
     Wait Until Element Is Located    ${race_card}
-    Scroll Element Into View    ${race_card}
+    Wait Until Completion    Scroll Element Into View    ${race_card}
     Wait Until Element Is Located    ${event_view_more}
     Click Element    ${event_view_more}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    2022/23 Le Mans Virtual Series Finale
+    Wait Until Completion        Page Should Contain Element    css:.event-hero__series-and-title__title
 
 
+Check partner link functionality
+    [Arguments]    ${esport_partners}
+    ${index}=   Set Variable    1
+    Wait Until Element Is Located    ${tab_partners}
+    Click Element    ${tab_partners}
+    Wait Until Completion    Page Should Contain Element    css:.rbr-paddock-partner-card
+    Wait Until Completion    Scroll Element Into View    css:.rbr-paddock-partner-card
+    ${partner_items}=   Get Webelements    css:a.rbr-paddock-partner-card
+    Create List     ${partner_items}
+    Log   ${partner_items}
+    FOR    ${partner}    IN    @{partner_items}
+        Click Element  ${partner}   CTRL
+        Switch Window    NEW
+        ${title}=   Get Title
+        Title Should Be    ${title}     ${esport_partners}[${index}]
+        ${index}=   Evaluate    ${index} + 1
+        Close Window
+        Switch Window   MAIN
+        IF    Element Should Not Be Visible    ${partner}
+            Wait Until Completion     Click Element       ${partner}
+        END
+    END
 

@@ -104,44 +104,44 @@ Check fan stories
 Check profile page
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}
-    Click Element    ${navbar_profile}
+    Wait Until Completion    Click Element    ${navbar_profile}
     Page Should Contain    Details
     Page Should Contain    First Name
     Page Should Contain    Last Name
     Page Should Contain    Gender
-    Click Element       ${gender_dropdown}
-    Click Element    xpath=(//div[contains(@class,'rbr-cosmos-select-option')])[3]
-    Click Element   ${marketing_toggle}[0]
-    Click Element   ${marketing_toggle}[1]
-    Click Element   ${marketing_toggle}[2]
-    Click Element    xpath=(//button[contains(text(),'Save')])[1]
+    Wait Until Completion    Click Element       ${gender_dropdown}
+    Wait Until Completion    Click Element    xpath=(//div[contains(@class,'rbr-cosmos-select-option')])[3]
+    Wait Until Completion    Click Element   ${marketing_toggle}[0]
+    Wait Until Completion    Click Element   ${marketing_toggle}[1]
+    Wait Until Completion    Click Element   ${marketing_toggle}[2]
+    Wait Until Completion    Click Element    xpath=(//button[contains(text(),'Save')])[1]
     Input Text    ${profile_input_field}[0]      SomeStreet 11
     Input Text    ${profile_input_field}[1]      SomeCity
     Input Text    ${profile_input_field}[2]      SomeState
     Input Text    ${profile_input_field}[3]      12345
     Input Text    ${profile_input_field}[4]      SomeCountry
     Wait Until Element Is Located    xpath=(//button[contains(text(),'Save')])[2]
-    Click Element    xpath=(//button[contains(text(),'Save')])[2]
+    Wait Until Completion    Click Element    xpath=(//button[contains(text(),'Save')])[2]
     Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saved!
 
 Check garage page
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}
-    Click Element    ${navbar_profile}
-    Click Element    ${garage}
+    Wait Until Completion    Click Element    ${navbar_profile}
+    Wait Until Completion    Click Element    ${garage}
     Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Garage
     Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
     Input Text      ${garage_input}     99
-    Click Element   (//p)[15]
+    Wait Until Completion    Click Element   (//p)[15]
     Wait Until Element Is Located    ${dropdown_showing}
-    Click Element    (//div[contains(@class,'rbr-cosmos-select-option')])[4]
-    Click Element    (//button[contains(text(),'Save')])[1]
+    Wait Until Completion    Click Element    (//div[contains(@class,'rbr-cosmos-select-option')])[4]
+    Wait Until Completion    Click Element    (//button[contains(text(),'Save')])[1]
     Page Should Contain    Saving...
-    Click Element    (//p)[23]
+    Wait Until Completion    Click Element    (//p)[23]
     Wait Until Element Is Located    ${dropdown_showing}
-    Click Element    (//p[normalize-space()='Circuit de Monaco'])[1]
-    Click Element    (//p)[45]
+    Wait Until Completion    Click Element    (//p[normalize-space()='Circuit de Monaco'])[1]
+    Wait Until Completion    Click Element    (//p)[45]
     Wait Until Element Is Located    ${dropdown_showing}
-    Click Element    (//p[normalize-space()='RB10'])[1]
-    Click Element    (//button[contains(text(),'Save')])[1]
+    Wait Until Completion    Click Element    (//p[normalize-space()='RB10'])[1]
+    Wait Until Completion    Click Element    (//button[contains(text(),'Save')])[1]
     Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saving...

@@ -156,3 +156,4 @@ tests/report.html
 *.html
 *.xml
 *.png
+*.out

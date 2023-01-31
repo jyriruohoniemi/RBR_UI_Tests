@@ -26,13 +26,13 @@ Test Navbar
 *** Keywords ***
 Check that the navbar works
     Wait until element is located   ${navbar}
-    Click element   ${navbar_nft}
+    Wait Until Completion    Click element   ${navbar_nft}
     Wait Until Element Is Located    ${heading}
-    Click element   ${navbar_about}
-    Wait Until Keyword Succeeds     10s    1s   Page Should Contain Element     xpath=//span[@class='description-text__summary__text']
-    Click element   ${navbar_videos}
+    Wait Until Completion    Click element   ${navbar_about}
+    Wait Until Completion       Page Should Contain Element     xpath=//span[@class='description-text__summary__text']
+    Wait Until Completion    Click element   ${navbar_videos}
     Wait Until Element Is Visible    ${video_player}
-    Click Element    ${navbar_faqs}
+    Wait Until Completion    Click Element    ${navbar_faqs}
     Wait Until Element Is Located    ${page_summary}
 
 

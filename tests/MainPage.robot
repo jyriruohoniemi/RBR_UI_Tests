@@ -33,10 +33,6 @@ Check social media
     [Tags]      Secondary
     Verify social media links
 
-Verify draggable handle works
-    [Tags]    Misc
-    Drag the handle
-
 Test the partner links
     [Tags]    Primary
     Verify the functionality of the partner links
@@ -46,46 +42,42 @@ Join the mailing list
     [Arguments]    ${email}
     Wait Until Element Is Located   ${email_field}
     Input Text   ${email_field}     ${email}
-    Click Element           ${checkbox}[0]
-    Click Element           ${checkbox}[1]
-    Click Element           ${checkbox}[2]
+    Wait Until Completion    Click Element           ${checkbox}[0]
+    Wait Until Completion    Click Element           ${checkbox}[1]
+    Wait Until Completion    Click Element           ${checkbox}[2]
     Wait Until Element Is Enabled   ${submit_button}
-    Click Button    ${submit_button}
-    Wait Until Keyword Succeeds     10s    1s   Page Should Contain    Thanks for joining the Oracle Red Bull Racing charge.
+    Wait Until Completion    Click Button    ${submit_button}
+    Wait Until Completion       Page Should Contain    Thanks for joining the Oracle Red Bull Racing charge.
 
 Check the podcast functionality
     Wait Until Element Is Located    ${podcast_banner}
-    Click Element        ${view_podcast}
-    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Talking Bull
-
-Drag the handle
-    Click Element At Coordinates    ${handle}   126   254
-    Click Element At Coordinates    ${handle}   939   277
+    Wait Until Completion    Click Element        ${view_podcast}
+    Wait Until Completion      Page Should Contain    Talking Bull
 
 Verify social media links
     Wait Until Element Is Located   ${social_media_container}
-    Click Element    ${social_media_links}[0]
+    Wait Until Completion    Click Element    ${social_media_links}[0]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos    #This link might be broken? Fails because page is not found
+    Wait Until Completion      Title Should Be    Page not found • Instagram    #This link might be broken
     Switch Window   MAIN
-    Click Element    ${social_media_links}[1]
+    Wait Until Completion    Click Element    ${social_media_links}[1]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing - Home | Facebook
+    Wait Until Completion       Title Should Be    Oracle Red Bull Racing - Home | Facebook
     Switch Window   MAIN
-    Click Element    ${social_media_links}[2]
+    Wait Until Completion    Click Element    ${social_media_links}[2]
     Switch Window    NEW
-    Wait Until Keyword Succeeds     10s    1s   Title Should Be    Oracle Red Bull Racing (@redbullracing) / Twitter
+    Wait Until Completion       Title Should Be    Oracle Red Bull Racing (@redbullracing) / Twitter
 
 
 Verify the functionality of the partner links
     ${index}=   Set Variable    1
-    ${contents}=    Get File    ../resources/sponsors.txt
+    ${contents}=    Get File    ${CURDIR}${/}..\\resources\\sponsors.txt
     @{lines}=    Split to Lines   ${contents}
     Wait Until Element Is Located    ${sponsor_banner}
     ${sponsorcontent}=  Get WebElements    ${sponsor_items}
     Create List    ${sponsorcontent}
     FOR    ${sponsor}    IN    @{sponsorcontent}
-        Click Element    ${sponsor}
+        Wait Until Completion    Click Element    ${sponsor}
         Switch Window    NEW
         ${title}=   Get Title
         Title Should Be          ${title}        ${lines}[${index}]

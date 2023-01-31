@@ -40,46 +40,47 @@ Check that car info is correct
 
 *** Keywords ***
 Select Max Verstappen
-    Click Element    xpath=//a[@href='/int-en/drivers/max-verstappen/']//span[@class='button__label'][normalize-space()='View profile']
+    Wait Until Element Is Located  xpath=//a[@href='/int-en/drivers/max-verstappen/']
+    Wait Until Completion   Click Element    xpath=//a[@href='/int-en/drivers/max-verstappen/']
 
 Select Sergio Perez
     Wait Until Element Is Located   ${navigation_arrow}
-    Click Element    ${navigation_arrow}
+    Wait Until Completion     Click Element       ${navigation_arrow}
     Wait Until Element Is Located   ${driver_image}
-    Click Element    xpath=//div[@class='glide__slide hero-slide glide__slide--active']//span[@class='button__label'][normalize-space()='View profile']
+    Wait Until Completion    Click Element    xpath=//div[@class='glide__slide hero-slide glide__slide--active']//span[@class='button__label'][normalize-space()='View profile']
 
 Select the car
     Wait Until Element Is Located   ${specs_button}
-    Click Element   ${specs_button}
+    Wait Until Completion    Click Element   ${specs_button}
 
 Check that Max info is correct
     Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Netherlands
-    Click Element    ${read_more}
+    Wait Until Completion      Click Element    ${read_more}
     Page Should Contain     23,000 laps raced
-    Click Element    ${view_more}
+    Wait Until Completion      Click Element    ${view_more}
     Page Should Contain    Pole Position: Brazilian Grand Prix
-    Click Element    ${view_more}
+    Wait Until Completion   Click Element    ${view_more}
 
 Check that Sergio info is correct
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Mexico
+    Wait Until Completion    Page Should Contain    Mexico
     Wait Until Element Is Located    ${read_more}
-    Click Element    ${read_more}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain     Force India/Racing Point
-    Click Element    ${view_more}
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    Wins the Sakhir Grand Prix
-    Click Element    ${view_more}
+    Wait Until Completion    Click Element    ${read_more}
+    Wait Until Completion    Page Should Contain     Force India/Racing Point
+    Wait Until Completion    Click Element    ${view_more}
+    Wait Until Completion    Page Should Contain    Wins the Sakhir Grand Prix
+    Wait Until Completion    Click Element    ${view_more}
 
 Check that car info is correct
     Page Should Contain    696
-    Wait Until Keyword Succeeds    10s    1s    Page Should Contain    696
+    Wait Until Completion    Page Should Contain    696
     Wait Until Element Is Located    ${info_pin}[1]
-    Mouse Over    ${info_pin}[0]
+    Wait Until Completion    Mouse Over    ${info_pin}[0]
     Page Should Contain    A four-element wing
-    Mouse Over    ${info_pin}[1]
+    Wait Until Completion    Mouse Over    ${info_pin}[1]
     Page Should Contain    The rear wing is also vastly different to previous generations
-    Mouse Over    ${info_pin}[2]
+    Wait Until Completion    Mouse Over    ${info_pin}[2]
     Page Should Contain    After more than half a century of 13-inch tyres
-    Mouse Over    ${info_pin}[3]
+    Wait Until Completion    Mouse Over    ${info_pin}[3]
     Page Should Contain    A major area of aero development for teams in recent years has been using airflow through the wheels to generate downforce
 
 Verify technical specs
@@ -97,7 +98,7 @@ Verify technical specs
 
 Check social media links of max
     Wait Until Element Is Located   ${social_container}
-    Scroll Element Into View    ${social_handles}[0]
+    Wait Until Completion    Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
     #Can't view page without a facebook account
@@ -105,16 +106,16 @@ Check social media links of max
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
-    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Max Verstappen (@Max33Verstappen) / Twitter
+    Wait Until Completion        Title Should Be    Max Verstappen (@Max33Verstappen) / Twitter
     Switch Window   MAIN
     Click Element    ${social_handles}[2]
     Switch Window    NEW
-    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Max Verstappen (@maxverstappen1) • Instagram photos and videos
+    Wait Until Completion   Title Should Be    Max Verstappen (@maxverstappen1) • Instagram photos and videos
 
 
 Check social media links of sergio
     Wait Until Element Is Located   ${social_container}
-    Scroll Element Into View    ${social_handles}[0]
+    Wait Until Completion    Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
     #Can't view page without a facebook account
@@ -122,8 +123,8 @@ Check social media links of sergio
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
-    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Checo Pérez (@schecoperez) • Instagram photos and videos
+    Wait Until Completion    Title Should Be    Checo Pérez (@schecoperez) • Instagram photos and videos
     Switch Window   MAIN
     Click Element    ${social_handles}[2]
     Switch Window    NEW
-    Wait Until Keyword Succeeds    30s    3s    Title Should Be    Sergio Pérez (@SChecoPerez) / Twitter
+    Wait Until Completion    Title Should Be    Sergio Pérez (@SChecoPerez) / Twitter
