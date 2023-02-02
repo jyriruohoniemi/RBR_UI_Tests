@@ -100,8 +100,6 @@ Check socials
     Switch Window    NEW
     Wait Until Completion        Page Should Contain    Red Bull Racing Esports - Home | Facebook
 
-
-
 Verify shop page functionality
     Wait Until Element Is Located    ${tab_shop}
     Click Element    ${tab_shop}
@@ -122,8 +120,6 @@ Verify shop page functionality
     Switch Window    NEW
     Wait Until Completion       Title Should Be    PlayseatStore - Game Seats and Racing & Flying Simulation Cockpits
 
-
-
 Test calendar functionality
     Wait Until Element Is Located    ${tab_races}
     Click Element    ${tab_races}
@@ -133,7 +129,6 @@ Test calendar functionality
     Wait Until Element Is Located    ${event_view_more}
     Click Element    ${event_view_more}
     Wait Until Completion        Page Should Contain Element    css:.event-hero__series-and-title__title
-
 
 Check partner link functionality
     [Arguments]    ${esport_partners}
