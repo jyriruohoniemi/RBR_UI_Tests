@@ -157,3 +157,4 @@ tests/report.html
 *.xml
 *.png
 *.out
+tests/.pabotsuitenames

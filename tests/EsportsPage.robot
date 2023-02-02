@@ -54,10 +54,10 @@ Check the functionality of the events
     Navigate to esports page
     Test calendar functionality
 
-#Verify partner links
-#    [Tags]   Test
-#    Navigate to esports page
-#    Check partner link functionality    ${esport_partners}
+Verify partner links
+   [Tags]   Test1
+   Navigate to esports page
+   Check partner link functionality    ${esport_partners}
 
 *** Keywords ***
 Check that all tabs work
@@ -137,7 +137,7 @@ Test calendar functionality
 
 Check partner link functionality
     [Arguments]    ${esport_partners}
-    ${index}=   Set Variable    1
+    ${index}=   Set Variable    0
     Wait Until Element Is Located    ${tab_partners}
     Click Element    ${tab_partners}
     Wait Until Completion    Page Should Contain Element    css:.rbr-paddock-partner-card
@@ -146,15 +146,19 @@ Check partner link functionality
     Create List     ${partner_items}
     Log   ${partner_items}
     FOR    ${partner}    IN    @{partner_items}
+        ${visible}=   Run Keyword And Return Status    Element Should Be Visible    ${partner}
+        Run Keyword If    ${visible} == False    Link not visible
+        Wait Until Completion    Scroll Element Into View    ${partner}
         Click Element  ${partner}   CTRL
         Switch Window    NEW
         ${title}=   Get Title
         Title Should Be    ${title}     ${esport_partners}[${index}]
         ${index}=   Evaluate    ${index} + 1
-        Close Window
         Switch Window   MAIN
-        IF    Element Should Not Be Visible    ${partner}
-            Wait Until Completion     Click Element       ${partner}
-        END
     END
+
+Link not visible
+    Wait Until Element Is Located    css:div[aria-label='Next']
+    Wait Until Completion    Scroll Element Into View    css:div[aria-label='Next']
+    Wait Until Completion    Click Element        css:div[aria-label='Next']
 
