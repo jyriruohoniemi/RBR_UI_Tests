@@ -8,7 +8,7 @@ Documentation    This file contains the tests related to operations of the paddo
 
 *** Variables ***
 ${paddock_logo}     https://red-bull-racing.herokuapp.com/assets/paddock_logo-c360975fa06f95588e6c362794dd8919.svg
-${redbull_social}   xpath=(//div[@class='rbr-paddock-login-social-provider is-redbull'])[1]
+${redbull_social}   css:.rbr_pdk-login-social-provider.is-redbull
 ${login}    css:.button.button--clickable.button--dark.button--large
 ${navbar}   xpath=//section[@id='rbr-paddock-navigation']//nav
 ${navbar_activities}    xpath=(//a[contains(text(),'Activities')])[1]
@@ -64,15 +64,15 @@ Login to the paddock page
     Click Element    ${login}
     Switch Window   NEW
     Wait Until Element Is Located    ${redbull_social}
-    Click Element   ${redbull_social}
+    Wait Until Completion    Click Element   ${redbull_social}
     Wait Until Element Is Located    id=email
     Input Text    id=email   ${username}
     Wait Until Element Is Enabled   css:button[type='submit']
-    Click Element   css:button[type='submit']
+    Wait Until Completion    Click Element   css:button[type='submit']
     Wait Until Element Is Enabled   id=pw
     Input Password        id=pw   ${password}
     Wait Until Element Is Enabled   css:button[type='submit']
-    Click Button    css:button[type='submit']
+    Wait Until Completion    Click Button    css:button[type='submit']
     Wait Until Element Is Located    ${navbar}
 
 
