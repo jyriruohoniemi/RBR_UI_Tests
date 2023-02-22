@@ -4,7 +4,6 @@ Library         SeleniumLibrary
 Resource        ../resources/Generic.robot
 Test Setup    Open Browser and accept cookies
 Test Teardown    Close Browser
-
 *** Variables ***
 ${email_field}          xpath=//input[@placeholder='Your email:']
 @{checkbox}             //div[@class='rbr-lite-account-presignup false']//div[1]//div[1]  //div[@class='rbr-lite-account-presignup false']//div[2]//div[1]    //div[@class='rbr-lite-account-presignup false']//div[3]//div[1]
@@ -26,9 +25,7 @@ ${event_view_more}    css:div[class='event-series-rail__expanded-item'] a[class=
 ${race_card}    css:div[class='event-series-rail__expanded-item'] div[class='hub-event-card']
 @{esport_partners}      Oracle      Bybit - Principal Team Partner      HyperX™ - Red Bull Racing Esports Peripherals Partner   Playseat® - Red Bull Racing Esports Partner   AOC - Red Bull Racing Esports Gaming Monitor Partner      Blenders - Eyewear Partner      Fanatec® - Red Bull Racing Esports Partner     Mobil 1   Pirelli
 
-
 *** Test Cases ***
-#TODO: Test the partner links
 Check the functionality of the navbar
     [Tags]   Primary
     Navigate to esports page
@@ -156,4 +153,3 @@ Link not visible
     Wait Until Element Is Located    css:div[aria-label='Next']
     Wait Until Completion    Scroll Element Into View    css:div[aria-label='Next']
     Wait Until Completion    Click Element        css:div[aria-label='Next']
-

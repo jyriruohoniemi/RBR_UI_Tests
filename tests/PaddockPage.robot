@@ -75,7 +75,6 @@ Login to the paddock page
     Wait Until Completion    Click Button    css:button[type='submit']
     Wait Until Element Is Located    ${navbar}
 
-
 Check navbar functionality
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}

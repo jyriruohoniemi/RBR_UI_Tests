@@ -158,3 +158,5 @@ tests/report.html
 *.png
 *.out
 tests/.pabotsuitenames
+tests/.pabotsuitenames
+tests/.pabotsuitenames

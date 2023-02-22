@@ -7,7 +7,6 @@ Test Setup      Open Browser and accept cookies
 Test Teardown    Close Browser
 Resource        ../resources/Generic.robot
 Documentation     This file contains all the keywords, tests and variables related to the operations of the main page
-
 *** Variables ***
 ${email_field}          xpath=//input[@placeholder='Your email:']
 @{checkbox}             //div[@class='rbr-lite-account-presignup false']//div[1]//div[1]  //div[@class='rbr-lite-account-presignup false']//div[2]//div[1]    //div[@class='rbr-lite-account-presignup false']//div[3]//div[1]

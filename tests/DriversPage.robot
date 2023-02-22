@@ -101,8 +101,7 @@ Check social media links of max
     Wait Until Completion    Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
-    #Can't view page without a facebook account
-    Title Should Be    Log in to Facebook
+    Wait Until Completion    Title Should Be    Max Verstappen | Facebook
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
@@ -118,8 +117,7 @@ Check social media links of sergio
     Wait Until Completion    Scroll Element Into View    ${social_handles}[0]
     Click Element    ${social_handles}[0]
     Switch Window    NEW
-    #Can't view page without a facebook account
-    Title Should Be    Log in to Facebook
+    Wait Until Completion    Title Should Be    Sergio Perez | Facebook
     Switch Window   MAIN
     Click Element    ${social_handles}[1]
     Switch Window    NEW
