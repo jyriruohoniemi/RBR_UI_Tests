@@ -77,7 +77,7 @@ Check that all tabs work
 Sign up for the free Newsletter
     [Arguments]    ${email}
     Wait Until Element Is Located   ${newsletter_container}
-    Input Text   ${email_field}     ${email}
+    Wait Until Keyword Succeeds  20s    1s  Input Text   ${email_field}     ${email}
     Wait Until Completion    Click Element           ${checkbox}[0]
     Wait Until Completion    Click Element           ${checkbox}[1]
     Wait Until Element Is Enabled   ${submit_button}
@@ -132,7 +132,7 @@ Test calendar functionality
 
 Check partner link functionality
     [Arguments]    ${esport_partners}
-    ${index}=   Set Variable    0
+    ${index}=   Set Variable    -1
     Wait Until Element Is Located    ${tab_partners}
     Click Element    ${tab_partners}
     Wait Until Completion    Page Should Contain Element    css:.rbr-paddock-partner-card

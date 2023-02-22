@@ -17,7 +17,7 @@ ${view_podcast}         xpath=//cosmos-text-3-22-1[contains(text(),'Talking Bull
 ${handle}               xpath=//div[@class='splitview skewed d-none d-lg-flex']
 ${social_media_container}   xpath=//div[@class='social-follow__buttons social-follow__buttons--3']
 @{social_media_links}   xpath=(//div[@class='social-follow__button'])[1]  xpath=(//div[@class='social-follow__button'])[2]  xpath=(//div[@class='social-follow__button'])[3]
-${sponsor_banner}   xpath=//cosmos-title-3-22-1[@class='sponsors__title']
+${sponsor_banner}   xpath=(//cosmos-title-4-4-0[@class='sponsors__title'])[1]
 ${sponsor_items}    xpath=(//div[@class='sponsors__item'])[@class='sponsors__item']
 
 *** Test Cases ***
@@ -70,7 +70,7 @@ Verify social media links
 
 
 Verify the functionality of the partner links
-    ${index}=   Set Variable    1
+    ${index}=   Set Variable    0
     ${contents}=    Get File    ${CURDIR}${/}..\\resources\\sponsors.txt
     @{lines}=    Split to Lines   ${contents}
     Wait Until Element Is Located    ${sponsor_banner}
