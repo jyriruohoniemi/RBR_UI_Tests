@@ -61,7 +61,7 @@ Check the garage functionality
 Login to the paddock page
     [Arguments]    ${username}    ${password}
     Wait Until Element Is Located    ${login}
-    Click Element    ${login}
+    Wait Until Completion    Click Element    ${login}
     Switch Window   NEW
     Wait Until Element Is Located    ${redbull_social}
     Wait Until Completion    Click Element   ${redbull_social}
@@ -79,26 +79,26 @@ Login to the paddock page
 Check navbar functionality
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}
-    Click Element    ${navbar_activities}
+    Wait Until Completion    Click Element    ${navbar_activities}
     Page Should Contain    Activities selected for you
-    Click Element    ${navbar_rewards}
+    Wait Until Completion    Click Element    ${navbar_rewards}
     Page Should Contain    Rewards selected for you
-    Click Element    ${navbar_content}
+    Wait Until Completion    Click Element    ${navbar_content}
     Page Should Contain Element        ${stream}
-    Click Element    ${navbar_community}
+    Wait Until Completion    Click Element    ${navbar_community}
     Page Should Contain Element         ${marquee}
-    Click Element    ${navbar_profile}
+    Wait Until Completion    Click Element    ${navbar_profile}
     Page Should Contain    Details
 
 Check fan stories
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
     Wait Until Element Is Located    ${navbar}
-    Click Element    ${navbar_community}
+    Wait Until Completion    Click Element    ${navbar_community}
     Page Should Contain Element        ${marquee}
-    Click Element    ${filter_story}
+    Wait Until Completion    Click Element    ${filter_story}
     Wait Until Element Is Visible    ${fan_story}
-    Click Element    ${toggle_filter}
-    Click Element    ${filter_images}
+    Wait Until Completion    Click Element    ${toggle_filter}
+    Wait Until Completion    Click Element    ${filter_images}
     Wait Until Element Is Visible    ${fan_image}
 
 Check profile page
@@ -115,11 +115,11 @@ Check profile page
     Wait Until Completion    Click Element   ${marketing_toggle}[1]
     Wait Until Completion    Click Element   ${marketing_toggle}[2]
     Wait Until Completion    Click Element    xpath=(//button[contains(text(),'Save')])[1]
-    Input Text    ${profile_input_field}[0]      SomeStreet 11
-    Input Text    ${profile_input_field}[1]      SomeCity
-    Input Text    ${profile_input_field}[2]      SomeState
-    Input Text    ${profile_input_field}[3]      12345
-    Input Text    ${profile_input_field}[4]      SomeCountry
+    Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[0]      SomeStreet 11
+    Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[1]      SomeCity
+    Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[2]      SomeState
+    Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[3]      12345
+    Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[4]      SomeCountry
     Wait Until Element Is Located    xpath=(//button[contains(text(),'Save')])[2]
     Wait Until Completion    Click Element    xpath=(//button[contains(text(),'Save')])[2]
     Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saved!
@@ -130,8 +130,8 @@ Check garage page
     Wait Until Completion    Click Element    ${navbar_profile}
     Wait Until Completion    Click Element    ${garage}
     Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Garage
-    Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
-    Input Text      ${garage_input}     99
+    Wait Until Keyword Succeeds    10s  1s  Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
+    Wait Until Keyword Succeeds    10s  1s  Input Text      ${garage_input}     99
     Wait Until Completion    Click Element   (//p)[15]
     Wait Until Element Is Located    ${dropdown_showing}
     Wait Until Completion    Click Element    (//div[contains(@class,'rbr-cosmos-select-option')])[4]
