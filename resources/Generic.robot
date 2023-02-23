@@ -26,8 +26,8 @@ Accept cookies
 
 Navigate to races page
     Click Element   ${RACES_PAGE}
-    Title Should Be    2022 FIA Formula One World Championship Race Calendar
-    Wait Until Keyword Succeeds    10s  1s  Title Should Be    2022 FIA Formula One World Championship Race Calendar
+    Title Should Be    2023 FIA Formula One World Championship Race Calendar
+    Wait Until Keyword Succeeds    10s  1s  Title Should Be    2023 FIA Formula One World Championship Race Calendar
 
 Navigate to paddock page
     Click Element   ${paddock_page}
