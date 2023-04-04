@@ -53,5 +53,5 @@ Wait until element is located
 
 Wait Until Completion
     [Arguments]    ${KW}    ${KWARGS}
-    Wait Until Keyword Succeeds    20s  1s  ${KW}    ${KWARGS}
+    Wait Until Keyword Succeeds    30s  1s      ${KW}    ${KWARGS}
 

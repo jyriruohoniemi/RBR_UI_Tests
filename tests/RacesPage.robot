@@ -18,7 +18,7 @@ ${navigation_arrow_left}    xpath=(//div[@class='event-series-rail__navigation-a
 ${race_card}    xpath=(//div[@class='hub-event-card-collapsed'])[3]
 ${heading}  css:div[class='rbr-event-hero-content'] h1
 ${view_event_info}      css:div[class='event-series-rail__expanded-item'] a[class='button button--clickable']
-${news_card}    css:cosmos-story-card-4-4-0[data-cosmos-component='cosmos-story-card']
+${news_card}    xpath=(//li[@class='swipe__item rail__item'])[24]
 ${news_title}   xpath=//h1[normalize-space()='Trackside News']
 ${arrow}    xpath=//div[@class='event-series-rail__navigation-arrow event-series-rail__navigation-arrow--right']
 
@@ -64,7 +64,7 @@ Check the calendar functionality and check another race
 Check news
     Wait Until Element Is Located    ${news_title}
     Wait Until Completion    Scroll Element Into View    ${news_title}
-    Wait Until Element Is Located   ${news_card}
+    Wait Until Completion    Wait Until Element Is Located   ${news_card}
     Wait Until Completion    Scroll Element Into View    ${news_card}
     Wait Until Completion    Click Element    ${news_card}
     Page should Contain     Published on

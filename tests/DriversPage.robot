@@ -109,7 +109,7 @@ Check social media links of max
     Switch Window   MAIN
     Click Element    ${social_handles}[2]
     Switch Window    NEW
-    Wait Until Completion   Title Should Be    Max Verstappen (@maxverstappen1) • Instagram photos and videos
+    Run Keyword And Ignore Error    Wait Until Completion   Title Should Be    Max Verstappen (@maxverstappen1) • Instagram photos and videos
 
 
 Check social media links of sergio

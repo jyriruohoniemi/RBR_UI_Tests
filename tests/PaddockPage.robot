@@ -15,9 +15,10 @@ ${navbar_activities}    xpath=(//a[contains(text(),'Activities')])[1]
 ${navbar_rewards}   xpath=(//a[contains(text(),'Rewards')])[1]
 ${navbar_content}   xpath=(//a[contains(text(),'Content')])[1]
 ${navbar_community}     xpath=(//a[contains(text(),'Community')])[1]
-${navbar_profile}   xpath=(//a[contains(text(),'Profile')])[1]
+${profile_icon}     xpath=(//img[@id='rbr-window-toggle-icon'])[1]
+${profile_link}     xpath=(//div[@class='profile-link'])[1]
 ${marquee}  xpath=(//div[@class='marquee'])[1]
-${stream}   xpath=(//div[@id='rbr-paddock-homerun-stream'])[1]
+${playlist}   xpath=//div[@class='rbr-paddock-content-player-playlist']
 ${fan_story}    xpath=(//div[@class='rbr-paddock-fan-story false can-click'])[2]
 ${fan_image}    xpath=(//img[@alt='Story asset image'])[1]
 ${filter_story}     xpath=(//div[@class='rbr-paddock-filter-option false'][normalize-space()='Stories'])[1]
@@ -25,7 +26,7 @@ ${toggle_filter}    xpath=(//div[@class='rbr-paddock-filter-option is-active'][n
 ${filter_images}    xpath=(//div[@class='rbr-paddock-filter-option false'][normalize-space()='Images'])[1]
 ${toggle_filter_images}     xpath=(//div[@class='rbr-paddock-filter-option is-active'][normalize-space()='Images'])[1]
 @{profile_input_field}  xpath=(//input[contains(@type,'text')])[4]  xpath=(//input[contains(@type,'text')])[5]  xpath=(//input[contains(@type,'text')])[6]  xpath=(//input[contains(@type,'text')])[7]  xpath=(//input[contains(@type,'text')])[8]
-${gender_dropdown}  xpath=(//div)[119]
+${gender_dropdown}  css:div[class='rbr-paddock-profile-content-fields'] div:nth-child(3) div:nth-child(2) div:nth-child(1) p:nth-child(1)
 @{marketing_toggle}     xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[1]   xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[2]     xpath=(//div[contains(@class,'rbr-paddock-profile-toggle-ui')])[3]
 ${garage}   xpath=(//p[normalize-space()='Garage'])[1]
 ${garage_input}     css:body > main:nth-child(1) > div:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > section:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(2) > div:nth-child(1) > input:nth-child(2)
@@ -53,7 +54,7 @@ Check the profile functionality
     Check profile page
 
 Check the garage functionality
-    [Tags]    Secondary
+    [Tags]    Test12
     Navigate To Paddock Page
     Check garage page
 
@@ -83,11 +84,9 @@ Check navbar functionality
     Wait Until Completion    Click Element    ${navbar_rewards}
     Page Should Contain    Rewards selected for you
     Wait Until Completion    Click Element    ${navbar_content}
-    Page Should Contain Element        ${stream}
+    Page Should Contain Element        ${playlist}
     Wait Until Completion    Click Element    ${navbar_community}
     Page Should Contain Element         ${marquee}
-    Wait Until Completion    Click Element    ${navbar_profile}
-    Page Should Contain    Details
 
 Check fan stories
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
@@ -102,18 +101,28 @@ Check fan stories
 
 Check profile page
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
-    Wait Until Element Is Located    ${navbar}
-    Wait Until Completion    Click Element    ${navbar_profile}
-    Page Should Contain    Details
-    Page Should Contain    First Name
-    Page Should Contain    Last Name
-    Page Should Contain    Gender
+    Wait Until Element Is Located    ${profile_icon}
+    Wait Until Completion    Click Element    ${profile_icon}
+    Wait Until Element Is Located    ${profile_link}
+    Wait Until Completion    Click Element    ${profile_link}
+    Wait Until Completion    Page Should Contain    Details
+    Wait Until Completion    Page Should Contain    First Name
+    Wait Until Completion    Page Should Contain    Last Name
+    Wait Until Completion    Page Should Contain    Gender
+
     Wait Until Completion    Click Element       ${gender_dropdown}
-    Wait Until Completion    Click Element    xpath=(//div[contains(@class,'rbr-cosmos-select-option')])[3]
+    Wait Until Completion    Click Element    xpath=(//p[contains(text(),'Prefer not to say')])[2]
     Wait Until Completion    Click Element   ${marketing_toggle}[0]
     Wait Until Completion    Click Element   ${marketing_toggle}[1]
     Wait Until Completion    Click Element   ${marketing_toggle}[2]
     Wait Until Completion    Click Element    xpath=(//button[contains(text(),'Save')])[1]
+
+    Wait Until Completion      Clear Element Text        ${profile_input_field}[0]
+    Wait Until Completion      Clear Element Text        ${profile_input_field}[1]
+    Wait Until Completion      Clear Element Text        ${profile_input_field}[2]
+    Wait Until Completion      Clear Element Text        ${profile_input_field}[3]
+    Wait Until Completion      Clear Element Text        ${profile_input_field}[4]
+
     Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[0]      SomeStreet 11
     Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[1]      SomeCity
     Wait Until Keyword Succeeds    10s  1s  Input Text    ${profile_input_field}[2]      SomeState
@@ -125,22 +134,26 @@ Check profile page
 
 Check garage page
     Login To The Paddock Page   ${EMAIL}    ${PASSWORD}
-    Wait Until Element Is Located    ${navbar}
-    Wait Until Completion    Click Element    ${navbar_profile}
+    Wait Until Element Is Located    ${profile_icon}
+    Wait Until Completion    Click Element    ${profile_icon}
+    Wait Until Element Is Located    ${profile_link}
+    Wait Until Completion    Click Element    ${profile_link}
+
     Wait Until Completion    Click Element    ${garage}
-    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Garage
-    Wait Until Keyword Succeeds    10s  1s  Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
-    Wait Until Keyword Succeeds    10s  1s  Input Text      ${garage_input}     99
+    Wait Until Completion      Page Should Contain    Garage
+    Wait Until Completion      Clear Element Text    (//input[contains(@class,'false')])[1]
+    Wait Until Keyword Succeeds    10s  1s     Input Text    (//input[contains(@class,'false')])[1]    SomeGuy
+    Wait Until Keyword Succeeds    10s  1s      Input Text    ${garage_input}     99
     Wait Until Completion    Click Element   (//p)[15]
-    Wait Until Element Is Located    ${dropdown_showing}
+    Wait Until Completion    Wait Until Element Is Located    ${dropdown_showing}
     Wait Until Completion    Click Element    (//div[contains(@class,'rbr-cosmos-select-option')])[4]
     Wait Until Completion    Click Element    (//button[contains(text(),'Save')])[1]
-    Page Should Contain    Saving...
-    Wait Until Completion    Click Element    (//p)[23]
-    Wait Until Element Is Located    ${dropdown_showing}
+    Wait Until Completion    Page Should Contain    Saving...
+    Wait Until Completion    Click Element    (//div)[137]
+    Wait Until Completion    Wait Until Element Is Located    ${dropdown_showing}
     Wait Until Completion    Click Element    (//p[normalize-space()='Circuit de Monaco'])[1]
-    Wait Until Completion    Click Element    (//p)[45]
-    Wait Until Element Is Located    ${dropdown_showing}
+    Wait Until Completion    Click Element    (//div)[165]
+    Wait Until Completion    Wait Until Element Is Located    ${dropdown_showing}
     Wait Until Completion    Click Element    (//p[normalize-space()='RB10'])[1]
     Wait Until Completion    Click Element    (//button[contains(text(),'Save')])[1]
-    Wait Until Keyword Succeeds    10s  1s  Page Should Contain    Saving...
+    Wait Until Completion    Page Should Contain    Saving...

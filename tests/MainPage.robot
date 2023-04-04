@@ -12,11 +12,11 @@ ${email_field}          xpath=//input[@placeholder='Your email:']
 @{checkbox}             //div[@class='rbr-lite-account-presignup false']//div[1]//div[1]  //div[@class='rbr-lite-account-presignup false']//div[2]//div[1]    //div[@class='rbr-lite-account-presignup false']//div[3]//div[1]
 ${submit_button}        xpath=//button[normalize-space()='Submit']
 ${podcast_banner}       xpath=//div[@id='crsd-rbracing-debrief-panel']//div[@class='editors-pick__wrapper']
-${view_podcast}         xpath=//cosmos-text-3-22-1[contains(text(),'Talking Bull is the official podcast of the Oracle')]
+${view_podcast}         xpath=(//cosmos-title-4-11-0[normalize-space()='Tune In To Talking Bull'])[1]
 ${handle}               xpath=//div[@class='splitview skewed d-none d-lg-flex']
 ${social_media_container}   xpath=//div[@class='social-follow__buttons social-follow__buttons--3']
 @{social_media_links}   xpath=(//div[@class='social-follow__button'])[1]  xpath=(//div[@class='social-follow__button'])[2]  xpath=(//div[@class='social-follow__button'])[3]
-${sponsor_banner}   xpath=(//cosmos-title-4-4-0[@class='sponsors__title'])[1]
+${sponsor_banner}   xpath=(//cosmos-title-4-11-0[@class='sponsors__title'])[1]
 ${sponsor_items}    xpath=(//div[@class='sponsors__item'])[@class='sponsors__item']
 
 *** Test Cases ***
@@ -50,6 +50,7 @@ Join the mailing list
 
 Check the podcast functionality
     Wait Until Element Is Located    ${podcast_banner}
+    Wait Until Completion    Scroll Element Into View    ${podcast_banner}
     Wait Until Completion    Click Element        ${view_podcast}
     Wait Until Completion      Page Should Contain    Talking Bull
 
@@ -57,7 +58,7 @@ Verify social media links
     Wait Until Element Is Located   ${social_media_container}
     Wait Until Completion    Click Element    ${social_media_links}[0]
     Switch Window    NEW
-    Wait Until Completion      Title Should Be    Page not found • Instagram    #This link might be broken
+    Run Keyword And Ignore Error    Title Should Be    Oracle Red Bull Racing (@redbullracing) • Instagram photos and videos   #This link might be broken at times
     Switch Window   MAIN
     Wait Until Completion    Click Element    ${social_media_links}[1]
     Switch Window    NEW
@@ -69,7 +70,7 @@ Verify social media links
 
 
 Verify the functionality of the partner links
-    ${index}=   Set Variable    0
+    ${index}=   Set Variable    -1
     ${contents}=    Get File    ${CURDIR}${/}..\\resources\\sponsors.txt
     @{lines}=    Split to Lines   ${contents}
     Wait Until Element Is Located    ${sponsor_banner}

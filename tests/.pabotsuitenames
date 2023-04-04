@@ -1,5 +1,10 @@
-datasources:07473fc7bc3ef7c74d17d87b0147480b81ffd837
+datasources:d493d2c9f0f24d4e8932b43bf5c81404aea1f0d0
 commandlineoptions:97d170e1550eee4afc0af065b78cda302a97674c
 suitesfrom:no-suites-from-option
-file:b6dd31a4a2410d95a3951f27f556f0b40ff8ae9a
+file:dcb0777e3feff92758c80f5b4cd1dd748c7263fa
 --suite PaddockPage
+--suite Tests.DriversPage
+--suite Tests.EsportsPage
+--suite Tests.MainPage
+--suite Tests.NFTPage
+--suite Tests.RacesPage

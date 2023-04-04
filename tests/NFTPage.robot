@@ -31,7 +31,7 @@ Check that the navbar works
     Wait Until Completion    Click element   ${navbar_about}
     Wait Until Completion       Page Should Contain Element     xpath=//span[@class='description-text__summary__text']
     Wait Until Completion    Click element   ${navbar_videos}
-    Wait Until Element Is Visible    ${video_player}
+    Wait Until Completion    Wait Until Element Is Located  ${video_player}
     Wait Until Completion    Click Element    ${navbar_faqs}
     Wait Until Element Is Located    ${page_summary}
 
